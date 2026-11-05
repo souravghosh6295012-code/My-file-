@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bright Digital Studio – ফটোগ্রাফি পোর্টফোলিও</title>
+<style>
+:root{--bg:#0b0b0d;--card:#16161a;--text:#f4efe6;--muted:#a79f90;--gold:#e8b832;--gold2:#b8860b;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#0b0b0d;--card:#16161a;--text:#f4efe6;--muted:#a79f90}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+header.hero{text-align:center;padding:56px 0 40px;background:radial-gradient(ellipse at top,#2a2108 0,var(--bg) 70%)}
+.tag{letter-spacing:.3em;font-size:12px;color:var(--gold)}
+h1{font-size:clamp(34px,8vw,60px);margin:10px 0 4px;background:linear-gradient(90deg,#f7d774,#e8b832,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);margin:0 0 24px}
+.btn{display:inline-block;background:linear-gradient(90deg,#f7d774,#c8941a);color:#1a1405;padding:12px 26px;border-radius:999px;font-weight:700;text-decoration:none}
+section{padding:36px 0}
+h2{font-size:24px;margin:0 0 18px;color:var(--gold)}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.svc{background:var(--card);border:1px solid #3a2f10;border-radius:14px;padding:16px 12px;text-align:center;font-size:15px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.filters button{background:var(--card);color:var(--text);border:1px solid #3a2f10;border-radius:999px;padding:7px 16px;font:inherit;cursor:pointer}
+.filters button.on{background:var(--gold);color:#1a1405;border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.tile{aspect-ratio:4/5;border-radius:12px;display:flex;align-items:flex-end;padding:10px;font-size:13px;color:#fff;background:linear-gradient(160deg,#3a2c0a,#14110a);border:1px dashed #5a4513}
+.tile.hide{display:none}
+.note{color:var(--muted);font-size:14px;margin-top:12px}
+.contact{text-align:center;background:var(--card);border-radius:18px;padding:32px 18px}
+.contact a.num{display:block;font-size:28px;font-weight:700;color:var(--text);text-decoration:none;margin:8px 0 18px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 0 32px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<div class="tag">CAPTURE ✦ CREATE ✦ CHERISH</div>
+<h1>Bright Digital Studio</h1>
+<p class="sub">Photography &amp; Videography — আপনার বিশেষ মুহূর্তগুলো আমাদের ক্যামেরায়</p>
+<a class="btn" href="#contact">তারিখ বুক করুন</a>
+</div></header>
+
+<main class="wrap">
+<section>
+<h2>আমাদের সার্ভিস</h2>
+<div class="services">
+<div class="svc">💍 বিয়ের ফটোগ্রাফি ও ভিডিওগ্রাফি</div>
+<div class="svc">💞 বাগদান (এনগেজমেন্ট)</div>
+<div class="svc">👶 অন্নপ্রাশন (মুখে ভাত)</div>
+<div class="svc">🎂 জন্মদিনের ফটোগ্রাফি</div>
+<div class="svc">🤰 সাধভক্ষণ (বেবি শাওয়ার)</div>
+<div class="svc">👨‍👩‍👧 পারিবারিক অনুষ্ঠান</div>
+<div class="svc">🎬 সিনেমাটিক ভিডিওগ্রাফি</div>
+<div class="svc">🎞️ ফটো ও ভিডিও এডিটিং</div>
+</div>
+</section>
+
+<section>
+<h2>গ্যালারি</h2>
+<div class="filters" id="filters"></div>
+<div class="grid" id="grid"></div>
+<p class="note">আমার তোলা ছবিগুলো এখানে যোগ করা হবে।</p>
+</section>
+
+<section id="contact">
+<div class="contact">
+<h2>যোগাযোগ করুন</h2>
+<a class="num" href="tel:+918327429438">+91 83274 29438</a>
+<a class="btn" href="https://wa.me/918327429438">WhatsApp এ মেসেজ করুন</a>
+</div>
+</section>
+</main>
+<footer>© Bright Digital Studio — Your Special Moments, Our Beautiful Memories</footer>
+
+<script>
+var cats=["বিয়ে","বাগদান","অন্নপ্রাশন","জন্মদিন","সাধভক্ষণ","পারিবারিক"];
+var f=document.getElementById("filters"),g=document.getElementById("grid"),cur="সব";
+function draw(){
+ f.innerHTML="";
+ ["সব"].concat(cats).forEach(function(c){
+  var b=document.createElement("button");b.textContent=c;if(c===cur)b.className="on";
+  b.onclick=function(){cur=c;draw();};f.appendChild(b);
+ });
+ g.innerHTML="";
+ cats.forEach(function(c){for(var i=1;i<=2;i++){
+  if(cur!=="সব"&&cur!==c)continue;
+  var t=document.createElement("div");t.className="tile";t.textContent=c+" • ছবি "+i;g.appendChild(t);
+ }});
+}
+draw();
+</script>
+</body>
+</html>
